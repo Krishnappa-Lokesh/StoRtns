@@ -1,0 +1,27 @@
+<core:FragmentDefinition 
+	xmlns:core="sap.ui.core" 
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:footerbar="sap.ushell.ui.footerbar" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:semantic="sap.m.semantic" 
+	xmlns:smart="sap.ui.comp.smartfield" 
+	xmlns="sap.m" >
+	<!-- Shared Content -->
+	<!-- intro="{= ${viewModel>/mode} === 'create'?  'Reference' : '' }"  -->  
+
+	<ObjectHeader id="objectHeader" 
+			title="{Ebeln}" 
+			condensed="true" 
+			responsive="true">
+		<attributes>
+			<!-- STO Date -->
+			<ObjectAttribute id="objAttribute1" 
+							title="STO Date" 
+							text="{     path: 'Aedat',     
+									type: 'sap.ui.model.type.Date',     
+									formatOptions: {      style: 'medium'     }}"/>
+			<ObjectAttribute id="objAttribute2" title="Plant" text="{Reswk}"/>
+		</attributes>
+	</ObjectHeader>
+</core:FragmentDefinition>

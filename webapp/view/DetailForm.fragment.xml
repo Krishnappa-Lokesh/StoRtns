@@ -1,0 +1,112 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:form="sap.ui.layout.form">
+	<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" expandable="false">
+		<items>
+			<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://activity-items" tooltip="{i18n>detailIconTabBarInfo}">
+				<content>
+					<Table id="lineItemsList" width="auto" items="{stortnItems}" updateFinished="onListUpdateFinished" noDataText="{i18n>detailLineItemTableNoDataText}" busyIndicatorDelay="{viewModel>/lineItemTableDelay}" class="sapUiResponsiveMargin">
+						<headerToolbar>
+							<Toolbar id="lineItemsToolbar">
+								<Title id="lineItemsHeader" text="{viewModel>/lineItemListTitle}"/>
+							</Toolbar>
+							<Toolbar width="100%" id="toolbar1">
+								<content>
+									<SegmentedButton id="segBtnGrp" selectionChange="onSegmentedBtnPressed" visible="{= ${viewModel>/mode} === 'create'? true : false }" selectedKey="selSegBtn1">
+										<items>
+											<SegmentedButtonItem id="segButton1" icon="sap-icon://multiselect-none" key="selSegBtn1"/>
+											<SegmentedButtonItem id="segButton2" icon="sap-icon://multiselect-all" key="selSegBtn2"/>
+										</items>
+									</SegmentedButton>
+								</content>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column width="5%" id="column7" visible="{= ${viewModel>/mode} === 'create'? true : false }">
+								<Text text=""/>
+							</Column>
+							<Column id="column8" width="auto">
+								<Text text="Item"/>
+							</Column>
+							<Column id="column9" width="auto" popinDisplay="WithoutHeader">
+								<Text text="Material"/>
+							</Column>
+							<Column id="colMfrpn" width="auto" popinDisplay="WithoutHeader">
+								<Text text="Mfr. PN"/>
+							</Column>
+							<Column id="column10" width="30%" demandPopin="true" popinDisplay="WithoutHeader" minScreenWidth="Desktop">
+								<Text text=" "/>
+							</Column>
+							<Column id="column11" hAlign="End">
+								<Text text="Qty"/>
+							</Column>
+
+							<!-- Return Qty Display -->
+							<Column id="columnReturnQtyDisplay" visible="{= ${viewModel>/mode} !== 'create'? true : false }" demandPopin="true" popinDisplay="WithoutHeader" minScreenWidth="Tablet">
+								<Text text="Return Qty"/>
+							</Column>
+							<!-- Return Qty Edit -->
+							<Column id="columnReturnQtyEdit" visible="{= ${viewModel>/mode} === 'create'? true : false }" demandPopin="true" popinDisplay="WithoutHeader" minScreenWidth="Tablet">
+								<Text text="Return Qty"/>
+							</Column>
+
+							<!-- Reason Code Display -->
+							<Column id="columnReasonCodeDisplay" visible="{= ${viewModel>/mode} !== 'create'? true : false }" demandPopin="true" popinDisplay="WithoutHeader" minScreenWidth="Tablet">
+								<Text text="Reason Code"/>
+							</Column>
+							<!-- Reason Code Edit -->
+							<Column id="columnReasonCodeEdit" visible="{= ${viewModel>/mode} === 'create'? true : false }" demandPopin="true" popinDisplay="WithoutHeader" minScreenWidth="Tablet">
+								<Text text="Reason Code"/>
+							</Column>
+
+							<!--<Column id="column14" hAlign="End" visible="{= ${viewModel>/mode} === 'display'? true : false }">-->
+							<Column id="column14" hAlign="End" demandPopin="true" popinDisplay="WithoutHeader" minScreenWidth="Desktop">
+								<Text text="Return Order"/>
+							</Column>
+
+						</columns>
+						<items>
+							<ColumnListItem id="item1_lineItemsList_0">
+								<cells>
+									<CheckBox id="checkBoxItem_copy_lineItemsList_0" selected="{Zslctd}" visible="{= ${viewModel>/mode} === 'create'? true : false }" editable="{= ${ZrEbeln} === '' ? true : false }" select="onChangeCheckbox"/>
+									<ObjectAttribute id="attribute6_copy_lineItemsList_0" text="{Ebelp}"/>
+									<ObjectIdentifier id="lineItemsListMatnr" title="{Matnr}"/>
+									<ObjectIdentifier id="lineItemsListMfrpn" title="{Mfrpn}"/>
+									<Text text="{Maktx}" id="text14_copy_lineItemsList_0" wrapping="false"/>
+									<ObjectNumber number="{Menge}" id="number0_copy_lineItemsList_0" unit="{Meins}"/>
+
+									<!-- Return Qty Display -->
+									<ObjectNumber id="objNumRtMenge" number="{RtMenge}" unit="{Meins}" visible="{= ${viewModel>/mode} !== 'create'? true : false }"/>
+
+									<!-- Return Qty Edit -->
+									<Input id="inputRtMenge" type="Number" value="{RtMenge}" editable="{= ${ZrEbeln} === '' &amp;&amp; ${Zslctd}   ? true : false }" visible="{= ${viewModel>/mode} === 'create'? true : false }" change="onRtnQtyEntered"/>
+
+									<!-- Reason Code Display -->
+									<ObjectAttribute id="attributeGrundDisplay" text="{Grtxt}" visible="{= ${viewModel>/mode} !== 'create'? true : false }"/>
+
+									<!-- Reason Code edit -->
+									<ComboBox id="cbGrundEdit" selectedKey="{Grund}" editable="{= ${ZrEbeln} === '' &amp;&amp; ${Zslctd}   ? true : false }" visible="{= ${viewModel>/mode} === 'create'? true : false }" validationError="handleValidationError" validationSuccess="handleValidationSuccess" change="handleValidationSuccess" items="{            path: '/rsncdSet',            sorter: { path: 'Grtxt' },            templateShareable: false            }">
+										<core:Item key="{Grund}" text="{Grtxt}"/>
+									</ComboBox>	
+
+									<!-- Object Status -->
+									<ObjectStatus text="{ZrEbeln}" state="Error" visible="{= ${ZrEbeln} !== '' ? true : false }"/>
+				
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</IconTabFilter>
+			<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://header" tooltip="{i18n>detailIconTabBarAttachments}" visible="{= ${viewModel>/mode} === 'create'? true : false }">
+				<content>
+					<!-- form -->
+					<form:SimpleForm title="Header Info" id="_attributes" layout="ResponsiveGridLayout" editable="true" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" singleContainerFullSize="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1">
+						<form:content>
+							<Label text="Comments" id="label1" design="Bold" textAlign="Center" width="auto"/>
+							<Input id="headerComment" width="auto" placeholder="25 Char only..." editable="{= ${viewModel>/mode} === 'create'? true : false }" value="{path:'Bktxt',            type: 'sap.ui.model.type.String',            constraints: { maxLength: 25 }            }"/>
+						</form:content>
+					</form:SimpleForm>
+				</content>
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+</core:FragmentDefinition>

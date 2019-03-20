@@ -1,0 +1,39 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:form="sap.ui.layout.form" id="createXmlView" controllerName="edu.jh.mh.stoRtns.StoRtns.controller.Create">
+	<!-- Detail Page -->
+	<semantic:DetailPage id="page" 
+						navButtonPress="onNavBack" 
+						showNavButton="{device>/system/phone}" 
+						title="{i18n>detailTitle}" 
+						busy="{detailView>/busy}" 
+						busyIndicatorDelay="{detailView>/delay}" 
+						floatingFooter="true" 
+						semanticRuleSet="Optimized">
+		<semantic:content>
+			<!-- Fragments -->
+			<core:Fragment id="frgObjectHeader" fragmentName="edu.jh.mh.stoRtns.StoRtns.view.ObjectHeaderForm" type="XML"/>
+			<core:Fragment id="frgItemDetails" fragmentName="edu.jh.mh.stoRtns.StoRtns.view.DetailForm" type="XML"/>
+		</semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{detailView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+		<semantic:saveAction>
+			<semantic:SaveAction id="actionSave" press="onSave" enabled="{viewModel>/dataChanged}" />
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction id="actionCancel" press="onCancel"/>
+		</semantic:cancelAction>
+		<semantic:customHeaderContent>
+			<Button id="button0" icon="sap-icon://full-screen" activeIcon="sap-icon://full-screen" press="hideMaster" tooltip="Hide Master"/>
+		</semantic:customHeaderContent>		
+		<semantic:messagesIndicator>		
+		    <semantic:MessagesIndicator id="messagesIndicator" tooltip="Messages" press="onMessagesButtonPress" />		
+		</semantic:messagesIndicator>		
+	</semantic:DetailPage>
+</mvc:View>

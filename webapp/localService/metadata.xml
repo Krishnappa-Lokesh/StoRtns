@@ -1,0 +1,74 @@
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+   <edmx:DataServices m:DataServiceVersion="2.0">
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="Z_MH_STORTN_SRV" xml:lang="en" sap:schema-version="1">
+         <EntityType Name="stortn" sap:content-version="1">
+            <Key>
+               <PropertyRef Name="Ebeln" />
+               <PropertyRef Name="Ebelp" />
+            </Key>
+            <Property Name="Ebeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Ebelp" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Aedat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Changed On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Mfrpn" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Mfr Part Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Menge" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="Meins" sap:label="PO Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Meins" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Order Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure" />
+            <Property Name="RtMenge" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="Meins" sap:label="PO Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Grund" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Reason for Mvmt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Grtxt" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Reason" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Zslctd" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Selected" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="ZrEbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="Message text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+         </EntityType>
+         <EntityType Name="rsncd" sap:content-version="1">
+            <Key>
+               <PropertyRef Name="Grund" />
+            </Key>
+            <Property Name="Grund" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Reason for Mvmt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Grtxt" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Reason" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+         </EntityType>
+         <EntityType Name="stortnhdr" sap:content-version="1">
+            <Key>
+               <PropertyRef Name="Ebeln" />
+            </Key>
+            <Property Name="Ebeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Bsart" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Document Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Aedat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Created On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Ihrez" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Your Reference" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Ernam" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Reswk" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Supplying Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Zrtnd" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Order Returned" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="Bktxt" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Doc.Header Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <NavigationProperty Name="stortnItems" Relationship="Z_MH_STORTN_SRV.stortnhdr_to_stortnitems" FromRole="FromRole_stortnhdr_to_stortnitems" ToRole="ToRole_stortnhdr_to_stortnitems" />
+         </EntityType>
+         <Association Name="stortnhdr_to_stortnitems" sap:content-version="1">
+            <End Type="Z_MH_STORTN_SRV.stortnhdr" Multiplicity="1" Role="FromRole_stortnhdr_to_stortnitems" />
+            <End Type="Z_MH_STORTN_SRV.stortn" Multiplicity="*" Role="ToRole_stortnhdr_to_stortnitems" />
+            <ReferentialConstraint>
+               <Principal Role="FromRole_stortnhdr_to_stortnitems">
+                  <PropertyRef Name="Ebeln" />
+               </Principal>
+               <Dependent Role="ToRole_stortnhdr_to_stortnitems">
+                  <PropertyRef Name="Ebeln" />
+               </Dependent>
+            </ReferentialConstraint>
+         </Association>
+         <EntityContainer Name="Z_MH_STORTN_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+            <EntitySet Name="stortnSet" EntityType="Z_MH_STORTN_SRV.stortn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+            <EntitySet Name="rsncdSet" EntityType="Z_MH_STORTN_SRV.rsncd" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+            <EntitySet Name="stortnhdrSet" EntityType="Z_MH_STORTN_SRV.stortnhdr" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+            <AssociationSet Name="stortnhdr_to_stortnitemsSet" Association="Z_MH_STORTN_SRV.stortnhdr_to_stortnitems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+               <End EntitySet="stortnhdrSet" Role="FromRole_stortnhdr_to_stortnitems" />
+               <End EntitySet="stortnSet" Role="ToRole_stortnhdr_to_stortnitems" />
+            </AssociationSet>
+         </EntityContainer>
+         <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://d291xgw.hosts.jhmi.edu:8000/sap/opu/odata/sap/Z_MH_STORTN_SRV/$metadata" />
+         <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://d291xgw.hosts.jhmi.edu:8000/sap/opu/odata/sap/Z_MH_STORTN_SRV/$metadata" />
+      </Schema>
+   </edmx:DataServices>
+</edmx:Edmx>
+
