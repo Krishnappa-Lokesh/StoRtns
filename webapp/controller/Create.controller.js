@@ -287,7 +287,10 @@ sap.ui.define([
 				}
 
 				if ( oLineItem.Zslctd === "X"  
-						&& ( parseInt(oLineItem.RtMenge,10)  > parseInt(oLineItem.Menge,10) ||  oLineItem.RtMenge === "0") ) {
+						&& ( parseInt(oLineItem.RtMenge,10)  > parseInt(oLineItem.Menge,10) 
+						||  oLineItem.RtMenge === "0" 
+						||  oLineItem.RtMenge === "" 
+						) ) {
 
 					aCells.find(function (listItem) {
 						if (listItem.getId().includes("inputRtMenge")) {
